@@ -19,7 +19,14 @@ import { FakeDbService } from 'app/fake-db/fake-db.service';
 import { AppComponent } from 'app/app.component';
 import { AppStoreModule } from 'app/store/store.module';
 import { LayoutModule } from 'app/layout/layout.module';
-
+import { environment } from '../environments/environment';
+//firestore
+import { AngularFireModule } from 'angularfire2';
+import { auth } from 'firebase/app';
+import { FireauthService } from '../app/services/fireauth.service';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+//---------
 const appRoutes: Routes = [
     {
         path        : 'apps',
@@ -56,6 +63,8 @@ const appRoutes: Routes = [
         BrowserAnimationsModule,
         HttpClientModule,
         RouterModule.forRoot(appRoutes),
+        
+        AngularFireModule.initializeApp(environment.firebaseConfig),
 
         TranslateModule.forRoot(),
         InMemoryWebApiModule.forRoot(FakeDbService, {
@@ -79,7 +88,14 @@ const appRoutes: Routes = [
 
         // App modules
         LayoutModule,
-        AppStoreModule
+        AppStoreModule,
+        
+        //Firebase 
+        AngularFireAuthModule,
+        AngularFirestoreModule
+    ],
+    providers: [
+        FireauthService
     ],
     bootstrap   : [
         AppComponent

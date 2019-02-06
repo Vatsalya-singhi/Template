@@ -2,6 +2,8 @@ import { Component, ViewEncapsulation } from '@angular/core';
 
 import { fuseAnimations } from '@fuse/animations';
 
+import { FireauthService } from 'app/services/fireauth.service';
+
 @Component({
     selector     : 'profile',
     templateUrl  : './profile.component.html',
@@ -14,7 +16,7 @@ export class ProfileComponent
     /**
      * Constructor
      */
-    constructor()
+    constructor(public auth :FireauthService)
     {
 
     }

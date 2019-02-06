@@ -8,7 +8,11 @@
              fxLayoutAlign.gt-sm="start center">
             <img class="profile-image avatar huge" src="assets/images/avatars/Velazquez.jpg"
                  [@animate]="{value:'*',params:{delay:'50ms',scale:'0.2'}}">
-            <div class="name" [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
+            <div class="name" [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}" *ngIf="auth.user$ | async as user; else dummyName">
+                {{user.displayName }}
+            </div>
+
+            <div #dummyName class="name" [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
                 Charlie Adams
             </div>
         </div>

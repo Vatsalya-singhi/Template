@@ -4,6 +4,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FuseConfigService } from '@fuse/services/config.service';
 import { fuseAnimations } from '@fuse/animations';
 
+import { FireauthService } from 'app/services/fireauth.service';
+
 @Component({
     selector     : 'login',
     templateUrl  : './login.component.html',
@@ -23,7 +25,8 @@ export class LoginComponent implements OnInit
      */
     constructor(
         private _fuseConfigService: FuseConfigService,
-        private _formBuilder: FormBuilder
+        private _formBuilder: FormBuilder,
+        public auth :FireauthService
     )
     {
         // Configure the layout

@@ -4,7 +4,15 @@
 
 export const environment = {
     production: false,
-    hmr       : false
+    hmr       : false,
+    firebaseConfig : {
+        apiKey: "AIzaSyCmeWA0yiX4Y7m8JjW598U4tgT4cpkMm20",
+        authDomain: "democheck-94841.firebaseapp.com",
+        databaseURL: "https://democheck-94841.firebaseio.com",
+        projectId: "democheck-94841",
+        storageBucket: "democheck-94841.appspot.com",
+        messagingSenderId: "493281165403"
+      },
 };
 
 /*
