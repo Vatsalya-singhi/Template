@@ -18,6 +18,9 @@ export class AuthGuard implements CanActivate {
       return this.auth.user$.pipe(
         take(1),
         map(user =>{
+          if (state.url.startsWith('/pages/auth/login')) {
+            return true;
+          }
           console.log('User=>',user);
           return !!user;
           //!!user
@@ -26,7 +29,7 @@ export class AuthGuard implements CanActivate {
           if(!loggedIn){
             console.log('Access denied');
             console.log('state.url=>',state.url);
-            this.router.navigate(['/getlogin'], { queryParams: { returnUrl: state.url }});
+            this.router.navigate(['/pages/auth/login'], { queryParams: { returnUrl: state.url }});
           }else{
             console.log('Access acquired!');
             //this.router.navigate(['/dashboard']);

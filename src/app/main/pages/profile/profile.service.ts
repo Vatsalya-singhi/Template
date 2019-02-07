@@ -39,6 +39,7 @@ export class ProfileService implements Resolve<any>
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> | Promise<any> | any
     {
         return new Promise((resolve, reject) => {
+            
             Promise.all([
                 this.getTimeline(),
                 this.getAbout(),
@@ -49,6 +50,7 @@ export class ProfileService implements Resolve<any>
                 },
                 reject
             );
+            
         });
     }
 

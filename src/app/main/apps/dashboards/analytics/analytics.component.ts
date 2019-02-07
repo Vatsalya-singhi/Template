@@ -26,6 +26,7 @@ export class AnalyticsDashboardComponent implements OnInit
         private _analyticsDashboardService: AnalyticsDashboardService
     )
     {
+        debugger;
         // Register the custom chart.js plugin
         this._registerCustomChartJSPlugin();
     }

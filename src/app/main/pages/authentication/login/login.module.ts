@@ -10,10 +10,6 @@ const routes = [
     {
         path     : 'auth/login',
         component: LoginComponent
-    },
-    {
-        path     : '**',
-        component: LoginComponent
     }
 ];
 

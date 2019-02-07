@@ -63,17 +63,25 @@ const appRoutes: Routes = [
         path      : 'getlogin', // was **
         loadChildren: './main/pages/authentication/login/login.module#LoginModule',
     },
+    {
+        path      : 'getprofile', // was **
+        //loadChildren: './main/pages/profile/profile.module#ProfileModule',
+        //loadChildren: './main/apps/apps.module#AppsModule',
+        loadChildren: './main/apps/calendar/calendar/module#CalendarModule',
+        canActivate : [AuthGuard]
+    },
     {   
         path: '',   
         redirectTo: 'apps/dashboards/analytics', 
         pathMatch: 'full',
         //canActivate : [AuthGuard]  doesnt get called anyways
     },
+    /*
     {
         path      : '**',
         redirectTo: 'apps/dashboards/analytics',
-        canActivate : [AuthGuard]
-    }
+        //canActivate : [AuthGuard]
+    }*/
 ];
 
 @NgModule({
@@ -84,7 +92,7 @@ const appRoutes: Routes = [
         BrowserModule,
         BrowserAnimationsModule,
         HttpClientModule,
-        RouterModule.forRoot(appRoutes),
+        RouterModule.forRoot(appRoutes, {enableTracing: true}),
         
         AngularFireModule.initializeApp(environment.firebaseConfig),
 

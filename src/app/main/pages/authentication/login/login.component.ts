@@ -33,6 +33,7 @@ export class LoginComponent implements OnInit
         private router: Router,
     )
     {
+        debugger;
         // Configure the layout
         this._fuseConfigService.config = {
             layout: {
