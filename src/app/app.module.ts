@@ -26,31 +26,53 @@ import { auth } from 'firebase/app';
 import { FireauthService } from '../app/services/fireauth.service';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AuthGuard } from './services/auth.guard';
 //---------
 const appRoutes: Routes = [
     {
+        path      : 'dashboard',
+        loadChildren: './main/apps/apps.module#AppsModule',
+        //canActivate : [AuthGuard]
+    },
+    {
         path        : 'apps',
-        loadChildren: './main/apps/apps.module#AppsModule'
+        loadChildren: './main/apps/apps.module#AppsModule',
+        canActivate : [AuthGuard]
     },
     {
         path        : 'pages',
-        loadChildren: './main/pages/pages.module#PagesModule'
+        loadChildren: './main/pages/pages.module#PagesModule',
+        canActivate : [AuthGuard]
     },
     {
         path        : 'ui',
-        loadChildren: './main/ui/ui.module#UIModule'
+        loadChildren: './main/ui/ui.module#UIModule',
+        canActivate : [AuthGuard]
     },
     {
         path        : 'documentation',
-        loadChildren: './main/documentation/documentation.module#DocumentationModule'
+        loadChildren: './main/documentation/documentation.module#DocumentationModule',
+        canActivate : [AuthGuard]
     },
     {
         path        : 'angular-material-elements',
-        loadChildren: './main/angular-material-elements/angular-material-elements.module#AngularMaterialElementsModule'
+        loadChildren: './main/angular-material-elements/angular-material-elements.module#AngularMaterialElementsModule',
+        canActivate : [AuthGuard]
+    },
+    {
+        path      : 'getlogin', // was **
+        loadChildren: './main/pages/authentication/login/login.module#LoginModule',
+    },
+    {   
+        path: '',   
+        redirectTo: 'apps/dashboards/analytics', 
+        pathMatch: 'full',
+        //canActivate : [AuthGuard]  doesnt get called anyways
     },
     {
         path      : '**',
-        redirectTo: 'apps/dashboards/analytics'
+        redirectTo: 'apps/dashboards/analytics',
+        canActivate : [AuthGuard]
     }
 ];
 
