@@ -30,11 +30,12 @@ export class FireauthService {
     );
    }
 
-   async googleSignin(){
+   async googleSignin(url){
      const provider = new auth.GoogleAuthProvider();
      const credentials = await this.afAuth.auth.signInWithPopup(provider);
      return this.updateUserData(credentials.user).then(()=>{
-       this.router.navigate(['/']);
+       debugger;
+       this.router.navigateByUrl(url);
      });
    }
 

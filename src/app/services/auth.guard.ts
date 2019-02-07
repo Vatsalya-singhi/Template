@@ -11,10 +11,10 @@ export class AuthGuard implements CanActivate {
 
   }
   canActivate(
-    next: ActivatedRouteSnapshot,
+    route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
       debugger;
-      console.log(this.router.getCurrentNavigation() ) ;
+      console.log("state.url=>",state.url) ; //console.log(this.router.url);
       return this.auth.user$.pipe(
         take(1),
         map(user =>{
@@ -25,10 +25,11 @@ export class AuthGuard implements CanActivate {
         tap(loggedIn => {
           if(!loggedIn){
             console.log('Access denied');
-            this.router.navigate(['/getlogin']);
+            console.log('state.url=>',state.url);
+            this.router.navigate(['/getlogin'], { queryParams: { returnUrl: state.url }});
           }else{
             console.log('Access acquired!');
-            this.router.navigate(['/dashboard']);
+            //this.router.navigate(['/dashboard']);
           }
         })
       );//true;
