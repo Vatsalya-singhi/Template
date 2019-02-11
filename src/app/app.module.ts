@@ -63,13 +63,14 @@ const appRoutes: Routes = [
         path      : 'getlogin', // was **
         loadChildren: './main/pages/authentication/login/login.module#LoginModule',
     },
+    /*
     {
         path      : 'getprofile', // was **
         //loadChildren: './main/pages/profile/profile.module#ProfileModule',
         //loadChildren: './main/apps/apps.module#AppsModule',
         loadChildren: './main/apps/calendar/calendar/module#CalendarModule',
         canActivate : [AuthGuard]
-    },
+    },*/
     {   
         path: '',   
         redirectTo: 'apps/dashboards/analytics', 

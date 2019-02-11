@@ -18,6 +18,6 @@ export class ProfileComponent
      */
     constructor(public auth :FireauthService)
     {
-        debugger;
+        //debugger;
     }
 }
